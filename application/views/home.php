@@ -8,64 +8,31 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
      <style>
             body {
-                background-image : url('https://i.pinimg.com/736x/82/cd/60/82cd60c48f91022bfcdf7affc1ce53a8.jpg');
+                background-image : url('https://foto.data.kemdikbud.go.id/getImage/20328986/7.jpg');
                 background-size : cover;
                 background-repeat : no-repeat;
-                background-attachment : fixed;
-                
+                background-attachment : fixed;   
+
             }
         </style>
 </head>
-<body>
-    <header class="bg-primary text-white text-center py-4">
+<body class="background">
+    <header class="text-white text-center py-4">
     <div class="text-center">
          <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" alt="image" height="200px" width="250px" >
         </div>
-        <h1>SMK Bina Nusantara</h1>
+        <h1>SMK Bina Nusantara Programer</h1>
+
     </header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     </nav>
     <main class="container mt-4">
         <section class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Identitas Sekolah</h3>
-                        <p class="card-text">Nama sekolah : SMK Bina Nusantara</p>
-                        <p class="card-text">Sekolah Nasional Jenjang : SMK</p>
-                        <p class="card-text">Pendidikan Status Sekolah : Swasta</p>
-                        <p class="card-text">Alamat Sekolah : JL.Mondosari No.5 MRANGGEN DEMAK</p>
-                        <p class="card-text">Kecamatan : Kec.Mranggen</p>
-                        <p class="card-text">Kabupaten : Kab.Demak</p>
-                        <p class="card-text">Provinsi : Prov.Jawa Tengah</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Informasi Sekolah</h3>
-                        <p class="card-text">Akreditasi : C</p>
-                        <p class="card-text">Kurikulum : 2013</p>
-                        <p class="card-text">Kepala Sekolah : Rif'atul Khoer</p>
-                        <p class="card-text">Operator Data : Sugiyarto</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Sarana Prasarana</h3>
-                        <p class="card-text">1.Ruang kelas</p>
-                        <p class="card-text">2.Ruang guru</p>
-                        <p class="card-text">3.Ruang ibadah</p>
-                        <p class="card-text">4.Ruang toilet</p>
-                        <p class="card-text">5.Tempat bermain olahraga</p>
-                    </div>
-                </div>
-            </div>
+            <div class="col-md-4 text-white" >
+                <h2>Tentang SMK</h2>
+                <h3>SMK Bina Nusantara cerdas, cermat, kreatif, berakhlak baik, mandiri, </h3>
         </section>
-        <section class="mt-4">
+        <section class="mt-4 text-white" >
             <h2>SMK Bina Nusantara Mranggen</h2>
             <ul>
                 <li>jurusan SMK cocok untuk siswa perempuan</li>
@@ -74,11 +41,12 @@
             </ul>
         </section>
         <div class= "jumbotron text-center">
-        <a class="btn btn-primary" href="./auth" role="button">Login</a>
+        <a class="btn btn-danger" href="./auth" role="button">Register</a>
+        <a class="btn btn-warning" href="./auth" role="button">Login</a>
         </div>
     </main>
     <footer class="bg-dark text-white text-center py-3 mt-4">
-        &copy; 2023 Your Company Name
+        &copy; 2023 - 2024 SMK Bina Nusantara
     </footer>
 
     <!-- Menggunakan Bootstrap JS dari CDN (opsional, hanya jika Anda memerlukan komponen Bootstrap yang interaktif) -->

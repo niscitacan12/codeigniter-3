@@ -48,13 +48,18 @@ class admin extends CI_Controller
         $this->load->view('admin/siswa', $data);
     }
 
-    // untuk tambah_siswa
+    public function guru()
+    {
+        $data['guru'] = $this->m_model->get_data('guru')->result();
+        $this->load->view('admin/guru', $data);
+    }
+   
     public function tambah_siswa()
     {
         $data['kelas'] = $this->m_model->get_data('kelas')->result();
         $this->load->view('admin/tambah_siswa', $data);
     }
-
+    
     public function aksi_tambah_siswa()
     {
         $foto = $this->upload_image('foto');
@@ -82,39 +87,61 @@ class admin extends CI_Controller
       
     }
 
-    // untuk update_siswa
+
+    public function tambah_guru()
+    {
+        $data['guru'] = $this->m_model->get_data('guru')->result();
+        $this->load->view('admin/tambah_guru', $data);    
+    }
+    
+    public function aksi_tambah_guru() 
+    { 
+        $data=[ 
+            'nama_guru' => $this->input->post('nama'), 
+            'nik' => $this->input->post('nik'), 
+            'gender' => $this->input->post('gender'), 
+        ]; 
+        $this->m_model->tambah_data('guru', $data); 
+        redirect(base_url('admin/guru'));
+    }
+    
+
     public function update_siswa($id)
     {
-        $data['siswa'] = $this->m_model->get_by_id('siswa', 'id_siswa', $id)->result();
+        $data['siswa'] = $this->m_model
+            ->get_by_id('siswa', 'id_siswa', $id)
+            ->result();
         $data['kelas'] = $this->m_model->get_data('kelas')->result();
         $this->load->view('admin/update_siswa', $data);
-    }    
+    }
+
     
-        public function aksi_update_siswa()
+    public function update_guru($id)
+    {
+        $data['guru'] = $this->m_model->get_by_id('guru', 'id', $id)->result();
+        $data['guru'] = $this->m_model->get_data('guru')->result();
+        $this->load->view('admin/update_guru', $data);
+    }
+    
+    public function aksi_update_siswa()
+    {
+        $data = array (
+            'nama_siswa' => $this->input->post('nama'),
+            'nisn' => $this->input->post('nisn'),
+            'gender' => $this->input->post('gender'),
+            'id_kelas' => $this->input->post('kelas'),
+        );
+    
+        $eksekusi = $this->m_model->ubah_data(
+            'siswa',
+            $data,
+            array('id_siswa' => $this->input->post('id_siswa'))
+        );
+    
+        if ($eksekusi)
         {
-            $data = array (
-                'nama_siswa' => $this->input->post('nama_siswa'),
-                'nisn' => $this->input->post('nisn'),
-                'gender' => $this->input->post('gender'),
-                'id_kelas' => $this->input->post('id_kelas'), // Perubahan disini
-            );
-        
-            $eksekusi = $this->m_model->ubah_data(
-                'siswa',
-                $data,
-                array('id_siswa' => $this->input->post('id_siswa'))
-            );
-        
-            if ($eksekusi)
-            {
-                $this->session->set_flashdata('sukses', 'berhasil');
-                redirect(base_url('admin/siswa'));
-            }
-            else
-            {
-                $this->session->set_flashdata('error', 'gagal');
-                redirect(base_url('admin/update_siswa/'.$this->input->post('id_siswa')));  
-            }
+            $this->session->set_flashdata('sukses', 'berhasil');
+            redirect(base_url('admin/siswa'));
         }
 
     // hapus 
@@ -165,5 +192,7 @@ class admin extends CI_Controller
         }
     }
 
+  }
 }
 ?>
+        

@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
@@ -25,7 +24,10 @@
                         <a class="nav-link" href="<?php echo base_url('admin') ?>">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('admin/siswa') ?>">Siswa</a>
+                        <a class="nav-link" href="<?php echo base_url('admin') ?>">Siswa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('admin/siswa') ?>">Guru</a>
                     </li>
 
                 </ul>
@@ -50,16 +52,32 @@
                         <th>NISN</th>
                         <th>Gender</th>
                         <th>Kelas</th>
-                        <th class="text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $no = 0;
-                                foreach ($siswa as $row):
-                                    $no++ ?>
-                    <tr>
-                        <td>
-                            <?php echo $no ?>
+                        <th class="text-center">Aksi</th> 
+                    </tr> 
+                </thead> 
+                <tbody> 
+                    <?php $no = 0; 
+                                foreach ($siswa as $row): 
+                                    $no++ ?> 
+                    <tr> 
+                        <td> 
+                            <?php echo $no ?> 
+                        </td> 
+                        <td> 
+                            <?php echo $row->nama_siswa ?> 
+                        </td> 
+                        <td> 
+                            <?php echo $row->nisn ?> 
+                        </td> 
+                        <td> 
+                            <?php echo $row->gender ?> 
+                        </td> 
+                        <td> <?php echo tampilan_full_kelas_byid($row->id_kelas) ?></td>
+                        <td class="text-center"> 
+                            <a href="<?php echo base_url('admin/update_siswa/').$row->id_siswa?>" 
+                                class="btn btn-primary btn-sm">Ubah</a> 
+                            <button onclick="hapus(<?php echo $row->id_siswa ?>)" 
+                                class="btn btn-danger btn-sm">Hapus</button> 
                         </td>
                         <td>
                            <img src="<?php echo base_url('images/siswa/' .$row->foto); ?>" width="50">
@@ -90,17 +108,45 @@
                 </tbody>
 
             </table>
+ 
+                    </tr> 
+                    <?php endforeach ?> 
+                </tbody> 
+            </table> 
+            </table> 
+            <button class="btn btn-sm btn-warning"><a href="Tambah_siswa" class="btn text-primary">Tambah</a> 
+            </button> 
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+            <script> 
+            function hapus(id) { 
+                Swal.fire({ 
+                    title: 'Apakah Kamu Ingin Menghapusnya?', 
+                    icon: 'warning', 
+                    showCancelButton: true, 
+                    confirmButtonColor: '#3085d6', 
+                    cancelButtonColor: '#d33', 
+                    confirmButtonText: 'Ya, Hapus!' 
+                }).then((result) => { 
+                    if (result.isConfirmed) { 
+                        window.location.href = "<?php echo base_url('admin/hapus_siswa/') ?>" + id; 
+                    } 
+                }); 
+            } 
+            </script> 
+ 
+            <?php if($this->session->flashdata('success')): ?> 
+            <script> 
+            Swal.fire({ 
+                icon: 'success', 
+                title: '<?=$this->session->flashdata('success')?>', 
+                showConfirmButton: false, 
+                timer: 1500 
+            }); 
+            </script> 
+            <?php endif; ?>
         </div>
 
     </div>
-    <script>
-    function hapus(id) {
-        var yes = confirm('Yakin DI Hapus?');
-        if (yes == true) {
-            window.location.href = "<?php echo base_url('admin/hapus_siswa/') ?>" + id;
-        }
-    }
-    </script>
 
     <script>
     function openNav() {
