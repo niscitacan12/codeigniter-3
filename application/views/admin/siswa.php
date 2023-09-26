@@ -9,6 +9,7 @@
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 </head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -28,10 +29,6 @@
                     </li>
 
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
     </nav>
@@ -41,10 +38,14 @@
     <div class="content">
         <div class="container table-container">
             <table class="table table-striped">
-
+    </div> 
+    <a href="<?php echo base_url('admin/tambah_siswa') ?>" class="btn btn-success m-2">
+                <i class="fas fa-plus"></i> Tambah
+            </a>
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Foto Siswa</th>
                         <th>Nama Siswa</th>
                         <th>NISN</th>
                         <th>Gender</th>
@@ -61,6 +62,9 @@
                             <?php echo $no ?>
                         </td>
                         <td>
+                           <img src="<?php echo base_url('images/siswa/' .$row->foto); ?>" width="50">
+                        </td>
+                        <td>
                             <?php echo $row->nama_siswa ?>
                         </td>
                         <td>
@@ -73,21 +77,19 @@
                             <?php echo tampilan_full_kelas_byid($row->id_kelas) ?>
                         </td>
                         <td class="text-center">
-
-                            </button>
-                            <a href="<?php echo base_url('admin/update_siswa/') . $row->id_siswa; ?>"
-                                class="btn btn-sm btn-primary">Ubah</a>
-
-                            <button onClick="hapus(<?php echo $row->id_siswa; ?>)"
-                                class="btn btn-sm btn-danger">Hapus</button>
+                        <a href="<?php echo base_url('admin/update_siswa/') . $row->id_siswa ?>"
+                                class="btn btn-primary">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <button onClick="hapus(<?php echo $row->id_siswa; ?>)" class="btn btn-danger">
+                                <i class="fas fa-trash"></i>
+                                </button>
                         </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
 
             </table>
-            <button class="btn btn-sm btn-warning"><a href="tambah_siswa" class="btn text-primary">Tambah</a>
-            </button>
         </div>
 
     </div>

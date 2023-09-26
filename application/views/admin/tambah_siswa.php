@@ -30,7 +30,7 @@
  
     .login-button { 
         display: inline-block; 
-        padding: 10px 20px; 
+        padding: 5px 10px; 
         background-color: #008B8B; 
         color: #fff; 
  
@@ -39,7 +39,7 @@
         font-size: 10px; 
         border: none; 
  
-        width: 100px; 
+        width: 50px; 
     } 
  
     .navbar { 
@@ -132,22 +132,7 @@
 </head>
 <body class='min-vh-100 d-flex align-items-center'>
 <div class="card w-50 m-auto p-3"> 
-<div class="navbar"> 
-        <span class="openbtn" onclick="openNav()">&#9776;</span> 
-        <h3 class="text-center text-white">Data Siswa</h3> 
-        <div class="search-container"> 
-            <input type="text" class="search-box" placeholder="Cari..."> 
-            <button type="submit">Cari</button> 
-        </div> 
-    </div> 
- 
-    <!-- Side Navbar (Samping) --> 
-    <div class="sidenav" id="mySidenav"> 
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; tutup</a> 
-        <a href="<?php echo base_url('admin') ?>">Beranda</a> 
-        <a href="<?php echo base_url('admin/siswa') ?>">Siswa</a>  
-    </div> 
- 
+    
     <!-- Konten --> 
     <div class="content">
         <h3 class="text-center">Tambah Siswa</h3> 
@@ -180,7 +165,11 @@
                     <?php endforeach; ?> 
                 </select> 
             </div>
-           
+            <div class="mb-3 col-6"> 
+                <label for="nama" class="form-label">Foto</label> 
+                <input type="file" class="form-control" name="foto" > 
+            </div>
+            <button type="submit" class="btn btn-primary">Tambah</button>
         </form> 
     </div>
     </div>

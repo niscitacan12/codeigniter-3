@@ -10,20 +10,12 @@
 
 </head>
 
-<body>
+<body class="min-vh-100 d-flex align-items-center">
     <div class="card w-50 m-auto p-3">
-        <div class="navbar">
-            <span class="openbtn" onclick="openNav()">&#9776;</span>
-            <h3 class="text-center text-white">Data Siswa</h3>
-            <div class="search-container">
-                <input type="text" class="search-box" placeholder="Cari...">
-                <button type="submit">Cari</button>
-            </div>
-        </div>
 
         <!-- Konten -->
         <div class="content">
-            <h3 class="text-center">Update</h3>
+            <h3 class="text-center">Ubah Siswa</h3>
             <?php foreach($siswa as $data_siswa): ?>
             <form class="row" action="<?php echo base_url('admin/aksi_update_siswa'); ?>" enctype="multipart/form-data"
                 method="post">
@@ -49,7 +41,7 @@
                 </div>
                 <div class="mb-3 col-6">
                     <label for="kelas" class="form-label">Kelas</label>
-                    <select name="id_kelas" id="kelas"
+                    <select name="id_kelas" id="kelas" class="form-select"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                         <option selected>Pilih Kelas</option>
                         <?php foreach($kelas as $row): ?>
@@ -57,6 +49,10 @@
                             <?php echo $row->tingkat_kelas.' '.$row->jurusan_kelas ?></option>
                         <?php endforeach ?>
                     </select>
+                </div>
+                <div class="mb-3 col-6"> 
+                    <label for="nama" class="form-label">Foto</label> 
+                    <input type="file" class="form-control" name="foto" > 
                 </div>
                 <div class="mb-3 col-12">
                     <input type="hidden" name="id_siswa" value="<?php echo $data_siswa->id_siswa; ?>">

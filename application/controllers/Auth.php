@@ -15,6 +15,7 @@ class Auth extends CI_Controller {
 		$this->load->view('auth/login');
 	}
 
+	// untuk aksi login
 	public function aksi_login()
 	{
 		$email = $this->input->post('email', true);
@@ -42,6 +43,7 @@ class Auth extends CI_Controller {
 		}
 	}
 
+	// untuk logout
 	function logout() {
 		$this->session->sess_destroy(); // Menggunakan sess_destroy() untuk mengakhiri sesi
 		redirect(base_url('auth'));
