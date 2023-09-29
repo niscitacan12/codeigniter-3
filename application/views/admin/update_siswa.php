@@ -6,7 +6,6 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
-<<<<<<< HEAD
 
 <body class="min-vh-100 d-flex align-items-center">
     <div class="card w-50 m-auto p-3">
@@ -47,10 +46,6 @@
                             <?php echo $row->tingkat_kelas.' '.$row->jurusan_kelas ?></option>
                         <?php endforeach ?>
                     </select>
-                </div>
-                <div class="mb-3 col-6"> 
-                    <label for="nama" class="form-label">Foto</label> 
-                    <input type="file" class="form-control" name="foto" > 
                 </div>
                 <div class="mb-3 col-12">
                     <input type="hidden" name="id_siswa" value="<?php echo $data_siswa->id_siswa; ?>">

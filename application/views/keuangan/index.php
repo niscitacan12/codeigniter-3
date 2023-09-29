@@ -43,26 +43,19 @@
    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
       <a href="#" class="flex items-center pl-2.5 mb-5">
          <img src="https://binusasmg.sch.id/ppdb/logobinusa.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" />
-         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Bina Nusantara</span>
+         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">SMK Bina Nusantara</span>
       </a>
       <ul class="space-y-2 font-medium">
          <li>
             <a href="admin" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <i class="fa-solid fa-chart-line fa-xl"></i>
-               <span class="ml-3">Dashboard Akademik</span>
+               <span class="ml-3">Dashboard Keuangan</span>
             </a>
          </li>
          <li>
-            <a href="admin/siswa" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            <i class="fa-solid fa-graduation-cap fa-xl"></i>
-               <span class="flex-1 ml-3 whitespace-nowrap">Data Siswa</span>
-            </a>
-         </li>
-         <li>
-            <a href="admin/akun" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            <i class="fa-solid fa-user fa-xl"></i>
-               <span class="flex-1 ml-3 whitespace-nowrap">Data Akun</span>
-            </a>
+          <a href="pembayaran" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+          <i class="fa-solid fa-user fa-xl"></i>
+            <span class="ml-3">Pembayaran</span>
          </li>
          <!-- untuk memberikan jarak -->
       <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
@@ -77,25 +70,21 @@
       </ul>
    </div>
 </aside>
-<h1 class="text-5xl font-bold" style="margin-left: 500px;">Dashboard Akademik <?php echo $this->session->userdata(
+<h1 class="text-5xl font-bold" style="margin-left: 500px;">Dashboard Keuangan <?php echo $this->session->userdata(
     'username'
 ); ?></h1>
     <div class="flex space-x-4 p-2 my-5" style="margin-left: 500px;">
     <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
-            <p>Jumlah Kelas</p>
-            <h1 class="text-4xl font-bold"><?php echo $kelas;?></h1>
+            <p>Jumlah Pembayaran SPP</p>
+            <h1 class="text-4xl font-bold">46</h1>
         </div>
         <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
-            <p>Jumlah Mapel</p>
-            <h1 class="text-4xl font-bold"><?php echo $mapel;?></h1>
+            <p>Jumlah Pembayaran Uang Gedung</p>
+            <h1 class="text-4xl font-bold">46</h1>
         </div>
         <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
-            <p>Jumlah Siswa</p>
-            <h1 class="text-4xl font-bold"><?php echo $siswa;?></h1>
-        </div>
-        <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
-            <p>Jumlah Guru</p>
-            <h1 class="text-4xl font-bold"><?php echo $guru;?></h1>
+            <p>Jumlah Pembayaran Uang Seragam</p>
+            <h1 class="text-4xl font-bold">46</h1>
         </div>
     </div>
 

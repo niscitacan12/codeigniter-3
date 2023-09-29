@@ -27,26 +27,21 @@
 <form action="<?php echo base_url(); ?>Auth/aksi_login" method="post" class="space-y-12"> 
     <div class="card-body"> 
     <div class="mb-3"> 
-    <label for="exampleInputEmail1" class="form-label">Email </label> 
-    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"> 
-  </div> 
-  <div class="mb-3">
-                <label for="exampleInputUsername" class="form-label">Username</label>
-                <input type="username" class="form-control" id="exampleInputUsername" name="username" required>
-            </div>
-  <div class="mb-3"> 
-    <label for="exampleInputPassword1" class="form-label">Password</label> 
-    <input type="password" class="form-control" id="exampleInputPassword1" name="password"> 
+       <label for="exampleInputEmail1" class="form-label">Email </label> 
+       <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"> 
     </div> 
-  </div> 
- <div class="text-center pb-3"> 
- <button type="submit" class="btn btn-primary">LOGIN</button> 
- </div> 
- <br>  
+       <label for="exampleInputPassword1" class="form-label">Password</label> 
+       <input type="password" class="form-control" id="exampleInputPassword1" name="password"> 
+    </div> 
+    <div class="text-center pb-3"> 
+           <button type="submit" class="btn btn-primary">LOGIN</button> 
+    </div> 
+        <br>  
           <p class="text-center">don't have an account yet? <a href="./auth">register account</a></p> 
         <br>  
-        </form> 
         </div> 
         </div>
+</form> 
+        
 </body>
 </html>

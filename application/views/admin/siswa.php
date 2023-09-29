@@ -24,10 +24,7 @@
                         <a class="nav-link" href="<?php echo base_url('admin') ?>">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('admin') ?>">Siswa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo base_url('admin/siswa') ?>">Guru</a>
+                        <a class="nav-link" href="<?php echo base_url('admin/siswa') ?>">Siswa</a>
                     </li>
 
                 </ul>
@@ -63,24 +60,8 @@
                         <td> 
                             <?php echo $no ?> 
                         </td> 
-                        <td> 
-                            <?php echo $row->nama_siswa ?> 
-                        </td> 
-                        <td> 
-                            <?php echo $row->nisn ?> 
-                        </td> 
-                        <td> 
-                            <?php echo $row->gender ?> 
-                        </td> 
-                        <td> <?php echo tampilan_full_kelas_byid($row->id_kelas) ?></td>
-                        <td class="text-center"> 
-                            <a href="<?php echo base_url('admin/update_siswa/').$row->id_siswa?>" 
-                                class="btn btn-primary btn-sm">Ubah</a> 
-                            <button onclick="hapus(<?php echo $row->id_siswa ?>)" 
-                                class="btn btn-danger btn-sm">Hapus</button> 
-                        </td>
                         <td>
-                           <img src="<?php echo base_url('images/siswa/' .$row->foto); ?>" width="50">
+                           <img src="<?php echo base_url('images/siswa/' . $row->foto); ?>" width="50">
                         </td>
                         <td>
                             <?php echo $row->nama_siswa ?>
@@ -110,12 +91,9 @@
             </table>
  
                     </tr> 
-                    <?php endforeach ?> 
                 </tbody> 
             </table> 
             </table> 
-            <button class="btn btn-sm btn-warning"><a href="Tambah_siswa" class="btn text-primary">Tambah</a> 
-            </button> 
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
             <script> 
             function hapus(id) { 
