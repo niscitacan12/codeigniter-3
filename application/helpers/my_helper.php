@@ -1,4 +1,8 @@
 <?php
+// convert ke format rupiah
+function convRupiah($value) {
+    return 'Rp. ' . number_format($value);
+}
 // untuk menampilkan tingkat kelas dan jurusan kelas by id
 function tampilan_full_kelas_byid($id)
 {
@@ -10,6 +14,8 @@ function tampilan_full_kelas_byid($id)
         return $stmt;
     }
 }
+
+// untuk nama siswa
 function nama_siswa($id)
 {
     $ci =& get_instance();

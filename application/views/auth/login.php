@@ -27,11 +27,15 @@
 <form action="<?php echo base_url(); ?>Auth/aksi_login" method="post" class="space-y-12"> 
     <div class="card-body"> 
     <div class="mb-3"> 
-       <label for="exampleInputEmail1" class="form-label">Email </label> 
-       <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"> 
+    <img src="https://png.pngtree.com/png-vector/20190927/ourmid/pngtree-email-icon-png-image_1757854.jpg" alt="logo" widht="20" height="20"
+            style="top: 50%; right: 10px;";>
+       <label for="exampleInputEmail1" class="form-label">Email</label> 
+       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Email" name="email" aria-describedby="emailHelp"> 
     </div> 
+    <img src="https://e7.pngegg.com/pngimages/778/12/png-clipart-computer-icons-skype-icon-design-change-password-logo-internet.png" alt="logo" widht="20" height="20"
+            style="top: 50%; right: 10px;";>
        <label for="exampleInputPassword1" class="form-label">Password</label> 
-       <input type="password" class="form-control" id="exampleInputPassword1" name="password"> 
+       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Password" name="password"> 
     </div> 
     <div class="text-center pb-3"> 
            <button type="submit" class="btn btn-primary">LOGIN</button> 

@@ -47,13 +47,13 @@
       </a>
       <ul class="space-y-2 font-medium">
          <li>
-            <a href="admin" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="keuangan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <i class="fa-solid fa-chart-line fa-xl"></i>
                <span class="ml-3">Dashboard Keuangan</span>
             </a>
          </li>
          <li>
-          <a href="pembayaran" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+          <a href="<?php echo base_url('keuangan/pembayaran')?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
           <i class="fa-solid fa-user fa-xl"></i>
             <span class="ml-3">Pembayaran</span>
          </li>
@@ -76,15 +76,16 @@
     <div class="flex space-x-4 p-2 my-5" style="margin-left: 500px;">
     <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
             <p>Jumlah Pembayaran SPP</p>
-            <h1 class="text-4xl font-bold">46</h1>
+            <br>
+            <h1 class="text-4xl font-bold">1.300.000</h1>
         </div>
         <div class="w-1/4 bg-blue-600 p-4 text-stone-50  rounded-lg shadow-md">
             <p>Jumlah Pembayaran Uang Gedung</p>
-            <h1 class="text-4xl font-bold">46</h1>
+            <h1 class="text-4xl font-bold">1.500.000</h1>
         </div>
         <div class="w-1/4 bg-blue-600 text-stone-50  p-4 rounded-lg shadow-md">
             <p>Jumlah Pembayaran Uang Seragam</p>
-            <h1 class="text-4xl font-bold">46</h1>
+            <h1 class="text-4xl font-bold">1.000.000</h1>
         </div>
     </div>
 

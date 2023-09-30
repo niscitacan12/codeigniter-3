@@ -57,7 +57,7 @@
 <div id="content" class="mx-auto w-3/4"> 
         <!-- tombol tambah -->
         <a href="<?php echo base_url('keuangan/tambah_bayar') ?>" class="btn btn-success ml-20">
-                <i class="fas fa-plus"></i> Tambah
+                <i class="fas fa-plus"></i> Tambah Pembayaran
         </a>
         <table class="table table-striped table-hover" style="margin-left: 150px">
                 <thead>
@@ -75,9 +75,9 @@
                         <td><?php echo $no ?> </td>
                         <td><?php echo nama_siswa ($row->id_siswa) ?></td>
                         <td><?php echo $row->jenis_pembayaran ?></td>
-                        <td><?php echo $row->total_pembayaran ?></td>
+                        <td><?php echo convRupiah($row->total_pembayaran) ?></td>
                         <td>
-                            <a href="<?php echo base_url('admin/ubah_bayar') . $row->id_siswa ?>"
+                            <a href="<?php echo base_url('keuangan/ubah_bayar/') . $row->id_siswa ?>"
                                 class="btn btn-primary">
                                 <i class="fas fa-edit"></i>
                             </a>
@@ -88,7 +88,35 @@
                     </tr>
                     <?php endforeach ?>
                 </tbody>
-        </table>        
+        </table> 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+            <script> 
+            function hapus(id) { 
+                Swal.fire({ 
+                    title: 'Apakah Kamu Ingin Menghapusnya?', 
+                    icon: 'warning', 
+                    showCancelButton: true, 
+                    confirmButtonColor: '#3085d6', 
+                    cancelButtonColor: '#d33', 
+                    confirmButtonText: 'Ya, Hapus!' 
+                }).then((result) => { 
+                    if (result.isConfirmed) { 
+                        window.location.href = "<?php echo base_url('keuangan/hapus/') ?>" + id; 
+                    } 
+                }); 
+            } 
+            </script> 
+ 
+            <?php if($this->session->flashdata('success')): ?> 
+            <script> 
+            Swal.fire({ 
+                icon: 'success', 
+                title: '<?=$this->session->flashdata('success')?>', 
+                showConfirmButton: false, 
+                timer: 1500 
+            }); 
+            </script> 
+            <?php endif; ?>
 </div>
 </body>
 </html>

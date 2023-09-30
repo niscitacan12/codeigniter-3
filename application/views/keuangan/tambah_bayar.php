@@ -19,13 +19,14 @@
               method="post" class="row"> 
             <div class="mb-3 col-6"> 
                 <label for="siswa" class="form-label">Nama Siswa</label> 
-                <select name="id_siswa" class="form-select">
+                <select name="nama" class="form-select">
+                    <!-- <option selected>Pilih Siswa</option> -->
                     <option selected>Pilih Siswa</option>
                     <?php foreach ($siswa as $row): ?>
-                        <option value="<?php echo $row->id_siswa ?>">
-                            <?php echo $row->nama_siswa?>
-                        </option>
-                        <?php endforeach ?>
+                    <option value="<?php echo $row->id_siswa; ?>">
+                        <?php echo $row->nama_siswa; ?>
+                    </option>
+                    <?php endforeach; ?>
                 </select>
             </div> 
             <div class="mb-3 col-6"> 

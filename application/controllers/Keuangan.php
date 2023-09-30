@@ -28,8 +28,8 @@ class Keuangan extends CI_Controller {
     // untuk tambah pembayaran
     public function tambah_bayar()
     {
-        $data['pembayaran'] = $this->m_model->get_data('pembayaran')->result();
         $data['siswa'] = $this->m_model->get_data('siswa')->result();
+        $data['pembayaran'] = $this->m_model->get_data('pembayaran')->result();
         $this->load->view('keuangan/tambah_bayar', $data);
     }
 
@@ -37,7 +37,7 @@ class Keuangan extends CI_Controller {
     public function aksi_tambah_bayar()
 	{
 		$data = [
-			'id_siswa'         => $this->input->post('id_siswa'),
+			'id_siswa'         => $this->input->post('nama'),
 			'jenis_pembayaran' => $this->input->post('jenis_pembayaran'),
 			'total_pembayaran' => $this->input->post('total_pembayaran'),
 			];
@@ -48,9 +48,36 @@ class Keuangan extends CI_Controller {
     // untuk ubah bayar
     public function ubah_bayar($id)
     {
+        $data['siswa'] = $this->m_model->get_data('siswa')->result();
         $data['pembayaran'] = $this->m_model->get_by_id('pembayaran', 'id_siswa', $id)->result();
         $this->load->view('keuangan/ubah_bayar', $data);
     }
 
+    // untuk aksi ubah bayar
+    public function aksi_ubah_bayar()
+    {
+        $data = array (
+                'id_siswa'         => $this->input->post('nama'),
+                'jenis_pembayaran' => $this->input->post('jenis_pembayaran'),
+                'total_pembayaran' => $this->input->post('total_pembayaran'),
+        );
+        $eksekusi=$this->m_model->ubah_data
+        ('pembayaran', $data, array('id'=>$this->input->post('id')));
+        if ($eksekusi)
+        {
+            $this->session->set_flashdata('sukses','berhasil');
+            redirect(base_url('keuangan/pembayaran'));
+        } else {
+            $this->session->set_flashdata('error','gagal');
+            redirect(base_url('keuangan/pembayaran/'.$this->input->post('id')));
+        }
+    }
+
+    // untuk hapus 
+    public function hapus($id)
+    {
+        $this->m_model->delete('pembayaran', 'id_siswa', $id);
+        redirect(base_url('keuangan/pembayaran'));
+    }
 }
 ?>    
