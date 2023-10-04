@@ -18,7 +18,7 @@
                 method="post">
                 <div class="mb-3 col-6">
                     <label for="nama_siswa" class="form-label">Nama Siswa</label>
-                    <input type="text" class="form-control" id="nama_siswa" name="nama_siswa"
+                    <input type="text" class="form-control" name="nama"
                         value="<?php echo $data_siswa->nama_siswa ?>">
                 </div>
                 <div class="mb-3 col-6">

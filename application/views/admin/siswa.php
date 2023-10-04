@@ -38,9 +38,11 @@
         <div class="container table-container">
             <table class="table table-striped">
     </div> 
-    <a href="<?php echo base_url('admin/tambah_siswa') ?>" class="btn btn-success m-2">
+            <a href="<?php echo base_url('admin/tambah_siswa') ?>" class="btn btn-success m-2">
                 <i class="fas fa-plus"></i> Tambah
             </a>
+             <!-- tombol export -->
+            <a href="<?php echo base_url('admin/export')?>" class="btn btn-primary ml-20">Export</a>
                 <thead>
                     <tr>
                         <th>No</th>
@@ -87,8 +89,15 @@
                     </tr>
                     <?php endforeach ?>
                 </tbody>
-
             </table>
+            <!-- modal -->
+            <div class="text-center">
+        <form action="<?= base_url('admin/import') ?>" method="post" enctype="multipart/form-data">
+           <input type="file" name="file" />
+           <input type="submit" name="import" class="inline-block rounded btn btn-danger px-4 py-2 text-xs font-mediun text-white hover:bg-r" 
+           value="import" />
+        </form>
+        </div>
  
                     </tr> 
                 </tbody> 

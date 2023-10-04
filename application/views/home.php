@@ -24,8 +24,7 @@
         <h1>SMK Bina Nusantara Programer</h1>
 
     </header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    </nav>
+    
     <main class="container mt-4">
         <section class="row">
             <div class="col-md-4 text-white" >
