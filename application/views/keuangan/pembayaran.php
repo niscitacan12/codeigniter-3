@@ -79,7 +79,7 @@
                         <td><?php echo $row->jenis_pembayaran ?></td>
                         <td><?php echo convRupiah($row->total_pembayaran) ?></td>
                         <td>
-                            <a href="<?php echo base_url('keuangan/ubah_bayar/') . $row->id_siswa ?>"
+                            <a href="<?php echo base_url('keuangan/ubah_bayar/') . $row->id ?>"
                                 class="btn btn-primary">
                                 <i class="fas fa-edit"></i>
                             </a>

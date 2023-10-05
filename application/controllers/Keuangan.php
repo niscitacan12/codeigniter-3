@@ -1,6 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
+defined('BASEPATH') or exit('No direct script access allowed');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -28,8 +27,62 @@ class Keuangan extends CI_Controller {
         $this->load->view('keuangan/pembayaran', $data);
     }
 
-    // untuk exspor
-public function export()
+    // untuk exsport
+    
+
+    // untuk tambah bayar
+    public function tambah_bayar()
+		{
+			$data['siswa'] = $this->m_model->get_data('siswa')->result();
+			$this->load->view('keuangan/tambah_bayar', $data);
+		}
+
+        public function aksi_tambah_bayar()
+		{
+            $data = [
+                'total_pembayaran' => $this->input->post('total_pembayaran'),
+                'jenis_pembayaran' => $this->input->post('jenis_pembayaran'),
+                'id_siswa' => $this->input->post('id_siswa'), // Mengambil 'id_siswa' yang dipilih dari elemen <select>
+            ];            
+		
+				$this->m_model->tambah_data('pembayaran', $data);
+				redirect(base_url('keuangan/pembayaran'));
+		}
+
+        // untuk ubah bayar
+        public function ubah_bayar($id)
+    {
+        $data['pembayaran'] = $this->m_model
+            ->get_by_id('pembayaran', 'id', $id)
+            ->result();
+        $data['siswa'] = $this->m_model->get_data('siswa')->result();
+        $this->load->view('keuangan/ubah_bayar', $data);
+    }
+
+    public function aksi_ubah_bayar()
+    {
+        $data = [
+            'id_siswa' => $this->input->post('nama_siswa'),
+            'jenis_pembayaran' => $this->input->post('jenis_pembayaran'),
+            'total_pembayaran' => $this->input->post('total_pembayaran'),
+        ];
+        $eksekusi = $this->m_model->ubah_data('pembayaran', $data, [
+            'id' => $this->input->post('id'),
+        ]);
+        if ($eksekusi) {
+            $this->session->set_flashdata('sukses', 'berhasil');
+            redirect(base_url('keuangan/pembayaran'));
+        } else {
+            $this->session->set_flashdata('error', 'gagal...');
+            redirect(
+                base_url(
+                    'keuangan/pembayaran/ubah_bayar/' .
+                        $this->input->post('id')
+                )
+            );
+        }
+    }
+    public function export()
     {
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
@@ -88,7 +141,7 @@ public function export()
             ],
         ];
 
-        $sheet->setCellValue('A1', 'DATA SISWA');
+        $sheet->setCellValue('A1', 'DATA PEMBAYARAN');
         $sheet->mergeCells('A1:E1');
         $sheet
             ->getStyle('A1')
@@ -96,9 +149,9 @@ public function export()
             ->setBold(true);
 
         $sheet->setCellValue('A3', 'ID');
-        $sheet->setCellValue('B3', 'NAMA');
-        $sheet->setCellValue('C3', 'NISN');
-        $sheet->setCellValue('D3', 'GENDER');
+        $sheet->setCellValue('B3', 'JENIS PEMBAYARAN');
+        $sheet->setCellValue('C3', 'TOTAL PEMBAYARAN');
+        $sheet->setCellValue('D3', 'SISWA');
         $sheet->setCellValue('E3', 'KELAS');
 
         $sheet->getStyle('A3')->applyFromArray($style_col);
@@ -107,15 +160,16 @@ public function export()
         $sheet->getStyle('D3')->applyFromArray($style_col);
         $sheet->getStyle('E3')->applyFromArray($style_col);
 
-        $data = $this->m_model->getDataSiswa();
+        // get dari database
+        $data = $this->m_model->getDataPembayaran();
 
         $no = 1;
         $numrow = 4;
         foreach ($data as $data) {
-            $sheet->setCellValue('A' . $numrow, $data->id_siswa);
-            $sheet->setCellValue('B' . $numrow, $data->nama_siswa);
-            $sheet->setCellValue('C' . $numrow, $data->nisn);
-            $sheet->setCellValue('D' . $numrow, $data->gender);
+            $sheet->setCellValue('A' . $numrow, $data->id);
+            $sheet->setCellValue('B' . $numrow, $data->jenis_pembayaran);
+            $sheet->setCellValue('C' . $numrow, $data->total_pembayaran);
+            $sheet->setCellValue('D' . $numrow, $data->nama_siswa);
             $sheet->setCellValue(
                 'E' . $numrow,
                 $data->tingkat_kelas . ' ' . $data->jurusan_kelas
@@ -145,66 +199,16 @@ public function export()
                 \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE
             );
 
-        $sheet->setTitle('DATA SISWA');
+        $sheet->setTitle('LAPORAN DATA PEMBAYARAN');
 
         header(
             'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         );
-        header('Content-Disposition: attachment; filename="Data Siswa.xlsx"');
+        header('Content-Disposition: attachment; filename="Data Pembayaran.xlsx"');
         header('Cache-Control: max-age=0');
 
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
-    }
-
-
-
-    // untuk tambah pembayaran
-    public function tambah_bayar()
-    {
-        $data['siswa'] = $this->m_model->get_data('siswa')->result();
-        $data['pembayaran'] = $this->m_model->get_data('pembayaran')->result();
-        $this->load->view('keuangan/tambah_bayar', $data);
-    }
-
-    // untuk aksi tambah pembayaran
-    public function aksi_tambah_bayar()
-	{
-		$data = [
-			'id_siswa'         => $this->input->post('nama'),
-			'jenis_pembayaran' => $this->input->post('jenis_pembayaran'),
-			'total_pembayaran' => $this->input->post('total_pembayaran'),
-			];
-		$this->m_model->tambah_data('pembayaran', $data);
-		redirect(base_url('Keuangan/pembayaran'));
-	}
-
-    // untuk ubah bayar
-    public function ubah_bayar($id)
-    {
-        $data['siswa'] = $this->m_model->get_data('siswa')->result();
-        $data['pembayaran'] = $this->m_model->get_by_id('pembayaran', 'id_siswa', $id)->result();
-        $this->load->view('keuangan/ubah_bayar', $data);
-    }
-
-    // untuk aksi ubah bayar
-    public function aksi_ubah_bayar()
-    {
-        $data = array (
-                'id_siswa'         => $this->input->post('nama'),
-                'jenis_pembayaran' => $this->input->post('jenis_pembayaran'),
-                'total_pembayaran' => $this->input->post('total_pembayaran'),
-        );
-        $eksekusi=$this->m_model->ubah_data
-        ('pembayaran', $data, array('id'=>$this->input->post('id')));
-        if ($eksekusi)
-        {
-            $this->session->set_flashdata('sukses','berhasil');
-            redirect(base_url('keuangan/pembayaran'));
-        } else {
-            $this->session->set_flashdata('error','gagal');
-            redirect(base_url('keuangan/pembayaran/'.$this->input->post('id')));
-        }
     }
 
     // untuk hapus 
@@ -223,7 +227,7 @@ public function export()
         foreach($object->getWorksheetIterator() as $worksheet) {
           $highestRow = $worksheet->getHighestRow();
           $highestColumn = $worksheet->getHighestColumn();
-          for($row=2; $row <= $highestRow; $row++) {
+          for($row=2; $row<=$highestRow; $row++) {
             $jenis_pembayaran = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
             $total_pembayaran = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
             $nisn = $worksheet->getCellByColumnAndRow(5, $row)->getValue();

@@ -80,7 +80,7 @@ class M_model extends CI_Model
     }
    }
 
-   public function get_data_siswa() {
+   public function getDataSiswa() {
     $this->db->join('kelas', 'siswa.id_kelas = kelas.id','left');
     
     $query = $this->db->get('siswa');
