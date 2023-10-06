@@ -47,6 +47,10 @@
                         <?php endforeach ?>
                     </select>
                 </div>
+                <div class="mb-3 col-6"> 
+                  <label for="nama" class="form-label">Foto</label> 
+                  <input type="file" class="form-control" name="foto"> 
+                </div>
                 <div class="mb-3 col-12">
                     <input type="hidden" name="id_siswa" value="<?php echo $data_siswa->id_siswa; ?>">
                     <button type="submit" class="btn btn-primary">Ubah</button>

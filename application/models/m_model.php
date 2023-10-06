@@ -104,6 +104,20 @@ class M_model extends CI_Model
             return false;
         }
     }
+
+    // Dalam model Anda (contoh: M_model.php)
+//     public function get_mapel_by_id($id_mapel) {
+//     $this->db->select('nama_mapel');
+//     $this->db->where('id', $id_mapel);
+//     $query = $this->db->get('mapel');
+
+//     if ($query->num_rows() > 0) {
+//         return $query->row();
+//     } else {
+//         return null;
+//     }
+// }
+
 }
 
 ?>
