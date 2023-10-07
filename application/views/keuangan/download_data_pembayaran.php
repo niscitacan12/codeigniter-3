@@ -3,7 +3,6 @@ header("Content-type: application/vnd.ms-excel");
 header("Content-Disposiion: attachment; filename=".$nama.".xls"); 
 ?>
 
-
 <!DOCTYPE html>
 <html>
 

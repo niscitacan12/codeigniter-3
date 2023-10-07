@@ -33,15 +33,17 @@
             <td>Walikelas</td>
         </tr>
         <?php $no= 1; 
-    foreach ($data_guru as $key) { ?>
+    foreach ($data_guru as $key) { 
+        $kelas = tampilan_full_kelas_byid($key->id_walikelas);
+        ?>
         <tr>
             <td><?php echo $no++; ?></td>
             <td><?php echo $key->nama_guru; ?></td>
             <td><?php echo $key->nik; ?></td>
             <td><?php echo $key->gender; ?></td>
             <td><?php echo tampil_full_mapel_byid($key->id_mapel) ?></td>
-            <!-- <td><?php echo ($id_walikelas) ? $id_walikelas : 'Tidak menjadi walikelas'?></td> -->
-            <td><?php echo tampilan_full_kelas_byid($key->id_walikelas) ?></td>
+            <td><?php echo ($kelas) ? $kelas : 'Tidak menjadi walikelas'?></td>
+            <!-- <td><?php echo tampilan_full_kelas_byid($key->id_walikelas) ?></td> -->
         </tr>
         <?php } ?>
     </table>
